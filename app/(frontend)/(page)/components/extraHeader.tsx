@@ -30,26 +30,25 @@ export function ExtraHeader(){
 
     useEffect(() => {
         if(localStorage.getItem("isFirst") != "true"){
-        localStorage.setItem("isFirst", "true");
-        const timer1 = setTimeout(() => {
+          const timer1 = setTimeout(() => {
             setShowLine(true)
             setTimeout(() => {
-            setShowContent(true)
+                setShowContent(true)
             }, 500);
-        }, 100);
-    
-        return () => {
-            clearTimeout(timer1)
-        }
-        }else{
-        setSearchBarMovingUp(true)
-        const timer1 = setTimeout(() => {
-            setShowContent(true)
-        }, 100);
-    
-        return () => {
-            clearTimeout(timer1)
-        }
+          }, 100);
+      
+          return () => {
+              clearTimeout(timer1)
+          }
+          }else{
+          setSearchBarMovingUp(true)
+          const timer1 = setTimeout(() => {
+              setShowContent(true)
+          }, 100);
+      
+          return () => {
+              clearTimeout(timer1)
+          }
         }
     }, [])
 
@@ -57,43 +56,44 @@ export function ExtraHeader(){
         setShowResults(false)
 
         if (isFirstSearch) {
-        setSearchBarMovingUp(true)
+          setSearchBarMovingUp(true)
+          localStorage.setItem("isFirst", "true");
 
-        setTimeout(() => {
-            setIsFirstSearch(false)
+          setTimeout(() => {
+              setIsFirstSearch(false)
 
-            if (searchQuery.trim()) {
-            const filtered = mockInvoices.filter(
-                (inv:any) =>
-                inv.invoiceNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                inv.amount.toString().includes(searchQuery),
-            )
-            setInvoices(filtered)
-            } else {
-            setInvoices(mockInvoices)
-            }
-            setCurrentPage(1)
+              if (searchQuery.trim()) {
+              const filtered = mockInvoices.filter(
+                  (inv:any) =>
+                  inv.invoiceNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                  inv.amount.toString().includes(searchQuery),
+              )
+              setInvoices(filtered)
+              } else {
+              setInvoices(mockInvoices)
+              }
+              setCurrentPage(1)
 
-            setTimeout(() => {
-            setShowResults(true)
-            }, 100)
-        }, 600)
+              setTimeout(() => {
+              setShowResults(true)
+              }, 100)
+          }, 600)
         } else {
-        if (searchQuery.trim()) {
-            const filtered = mockInvoices.filter(
-            (inv:any) =>
-                inv.invoiceNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                inv.amount.toString().includes(searchQuery),
-            )
-            setInvoices(filtered)
-        } else {
-            setInvoices(mockInvoices)
-        }
-        setCurrentPage(1)
+          if (searchQuery.trim()) {
+              const filtered = mockInvoices.filter(
+              (inv:any) =>
+                  inv.invoiceNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                  inv.amount.toString().includes(searchQuery),
+              )
+              setInvoices(filtered)
+          } else {
+              setInvoices(mockInvoices)
+          }
+          setCurrentPage(1)
 
-        setTimeout(() => {
-            setShowResults(true)
-        }, 100)
+          setTimeout(() => {
+              setShowResults(true)
+          }, 100)
         }
     }
 
@@ -109,7 +109,7 @@ export function ExtraHeader(){
             <div className="relative">
               <div
                 className={`flex justify-center items-center flex-col fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 bg-primary transition-all border-x-2 border-x-primary ease-out duration-700 ${
-                  searchBarMovingUp ? "!top-9 z-30 scale-100 opacity-100 !duration-0" : "scale-125 "} ${
+                  searchBarMovingUp ? "!top-9 z-30 scale-100 opacity-100 !duration-0" : "scale-110 "} ${
                   showContent ? "h-auto opacity-100 w-auto !bg-transparent !border-x-transparent !duration-800" :
                   showLine ? "h-10 opacity-100 !duration-800" : "h-0 opacity-0 "
                 }`}

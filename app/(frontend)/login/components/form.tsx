@@ -40,7 +40,7 @@ export function Form() {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col justify-center items-center bg-gray-50 px-4">
+    <div className="w-full min-h-screen flex flex-col justify-center items-center bg-white px-4 dark:bg-black">
       <Card className="p-6 w-full max-w-md shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-500">
         <h1 className="font-semibold text-2xl text-center mb-4">{t.title}</h1>
 

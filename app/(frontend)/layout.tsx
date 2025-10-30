@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Providers } from "./providers";
 import { getThemeCookie } from '@/lib/cookies'
 import './globals.css'
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'v0 App',
@@ -21,6 +22,7 @@ export default async function RootLayout({
       <body className={`font-sans antialiased`}>
         <Providers>
           {children}
+          <Toaster />
         </Providers>
       </body>
     </html>

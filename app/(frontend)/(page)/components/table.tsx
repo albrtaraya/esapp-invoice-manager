@@ -11,19 +11,15 @@ import { Button } from "@/components/ui/button"
 import { translations } from "@/app/(frontend)/(page)/translations"
 import { useInvoice } from "../contexts/InvoiceContext"
 
-interface TableProps {
-    isFirstSearch: boolean;
-    searchBarMovingUp: boolean;
-    searchQuery: string; 
-    showResults: boolean; 
-    setShowResults: (show: boolean) => void;
-    currentPage: number;
-    setCurrentPage: (page: number) => void;
-    invoices: any[];
-    setInvoices: (invoices: any[]) => void;
-}
-
-export function Table() {
+export function Table({
+    setMockInvoices,
+    setLoading,
+    setError
+}:{
+    setMockInvoices: (invoices: any[]) => void,
+    setLoading: (loading: boolean) => void,
+    setError: (error: string | null) => void
+}) {
     const {
         isFirstSearch, 
         searchBarMovingUp, 
@@ -33,10 +29,10 @@ export function Table() {
         currentPage,
         setCurrentPage,
         invoices,
-        setInvoices
+        setInvoices,
+        mockInvoices
     } = useInvoice();
     const { language } = useLanguageContext();
-    const [mockInvoices, setMockInvoices] = useState<any>([])
     const [isFiltersOpen, setIsFiltersOpen] = useState(false)
     const [rowsPerPage, setRowsPerPage] = useState(6)
     const [viewMode, setViewMode] = useState<"cards" | "table">("cards")
@@ -53,9 +49,7 @@ export function Table() {
 
   
     useEffect(() => {
-      if(localStorage.getItem("isFirst") != "true"){
-        localStorage.setItem("isFirst", "true");    
-      }else{
+      if(localStorage.getItem("isFirst") == "true"){
         setCurrentPage(1)
         const filtered = mockInvoices.filter(
           (inv: any) =>
@@ -214,12 +208,18 @@ export function Table() {
                             transitionDelay: showResults ? `${index * 80}ms` : "0ms",
                         }}
                         >
-                        <InvoiceCard invoice={invoice} language={language} />
+                        <InvoiceCard invoice={invoice} language={language} 
+                            setError={setError}
+                            setLoading={setLoading}
+                            setMockInvoices={setMockInvoices} />
                         </div>
                     ))}
                     </div>
                 ) : (
-                    <InvoiceTable invoices={currentInvoices} language={language} />
+                    <InvoiceTable invoices={currentInvoices} language={language} 
+                        setError={setError}
+                        setLoading={setLoading}
+                        setMockInvoices={setMockInvoices} />
                 )}
                 </div>
 
