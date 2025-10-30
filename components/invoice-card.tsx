@@ -2,8 +2,8 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import type { Language } from "@/lib/translations"
-import { translations } from "@/lib/translations"
+import type { Language } from "@/app/(frontend)/(page)/translations"
+import { translations } from "@/app/(frontend)/(page)/translations"
 
 interface Invoice {
   id: string

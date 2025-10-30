@@ -12,8 +12,9 @@ import { LanguageSelector } from "@/components/language-selector"
 import { InvoiceCard } from "@/components/invoice-card"
 import { InvoiceTable } from "@/components/invoice-table"
 import { FiltersPanel } from "@/components/filters-panel"
-import { translations, type Language } from "@/lib/translations"
+import { translations, type Language } from "@/app/(frontend)/(page)/translations"
 import { Header } from "@/components/header"
+import { useLanguageContext } from "@/providers/LanguageContext"
 
 // Mock data para demostración
 const mockInvoices = [
@@ -76,8 +77,8 @@ const mockInvoices = [
 ]
 
 export default function InvoiceSearchPage() {
+  const { language } = useLanguageContext();
   const [theme, setTheme] = useState<"light" | "dark">("light")
-  const [language, setLanguage] = useState<Language>("es")
   const [searchQuery, setSearchQuery] = useState("")
   const [showContent, setShowContent] = useState(false)
   const [showHeader, setShowHeader] = useState(false)

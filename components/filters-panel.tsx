@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import type { Language } from "@/lib/translations"
-import { translations } from "@/lib/translations"
+import type { Language } from "@/app/(frontend)/(page)/translations"
+import { translations } from "@/app/(frontend)/(page)/translations"
 
 interface FiltersPanelProps {
   isOpen: boolean

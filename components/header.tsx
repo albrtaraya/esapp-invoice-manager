@@ -27,17 +27,36 @@ export function Header(){
     const [showHeader, setShowHeader] = useState(false);
 
     useEffect(() => {
-        if(localStorage.getItem("isFirst") != "true"){
-          const timer1 = setTimeout(() => {
-            setShowHeader(true)
-          }, 1100);
-          return () => {
-            clearTimeout(timer1)
-          }
-        }else{
-          setShowHeader(true);
+      if(localStorage.getItem("isFirst") != "true"){
+        const timer1 = setTimeout(() => {
+          setShowHeader(true)
+        }, 1100);
+        return () => {
+          clearTimeout(timer1)
         }
-      }, []);
+      }else{
+        setShowHeader(true);
+      }
+    }, []);
+
+    useEffect(() => {
+      setTheme(localStorage.getItem("theme"))
+      if (localStorage.getItem("theme") === "dark" ) {
+        document.documentElement.classList.add("dark")
+      } else {
+        document.documentElement.classList.remove("dark")
+      }
+    }, [])
+
+    useEffect(() => {
+      if (theme === "dark") {
+        localStorage.setItem("theme", "dark");
+        document.documentElement.classList.add("dark")
+      } else {
+        localStorage.setItem("theme", "light");
+        document.documentElement.classList.remove("dark")
+      }
+    }, [theme])
 
     return (<>
         <header
