@@ -7,8 +7,6 @@ import { Search, Filter, LayoutGrid, Table2, FileSpreadsheet, FileText, ChevronL
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { LanguageSelector } from "@/components/language-selector"
 import { InvoiceCard } from "@/components/invoice-card"
 import { InvoiceTable } from "@/components/invoice-table"
 import { FiltersPanel } from "@/components/filters-panel"
@@ -78,7 +76,6 @@ const mockInvoices = [
 
 export default function InvoiceSearchPage() {
   const { language } = useLanguageContext();
-  const [theme, setTheme] = useState<"light" | "dark">("light")
   const [searchQuery, setSearchQuery] = useState("")
   const [showContent, setShowContent] = useState(false)
   const [showHeader, setShowHeader] = useState(false)
@@ -101,15 +98,6 @@ export default function InvoiceSearchPage() {
   })
 
   const t = translations[language]
-
-  useEffect(() => {
-    // Aplicar tema al documento
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
-  }, [theme])
 
   useEffect(() => {
     if(localStorage.getItem("isFirst") != "true"){
