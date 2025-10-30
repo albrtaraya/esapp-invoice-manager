@@ -1,0 +1,58 @@
+export const mockInvoices = [
+  {
+    id: "1",
+    invoiceNumber: "INV-2025-001",
+    amount: 1250.0,
+    dueDate: "2025-11-15",
+    status: "pending" as const,
+  },
+  {
+    id: "2",
+    invoiceNumber: "INV-2025-002",
+    amount: 3400.5,
+    dueDate: "2025-10-20",
+    status: "overdue" as const,
+  },
+  {
+    id: "3",
+    invoiceNumber: "INV-2025-003",
+    amount: 890.25,
+    dueDate: "2025-12-01",
+    status: "pending" as const,
+  },
+  {
+    id: "4",
+    invoiceNumber: "INV-2025-004",
+    amount: 2100.0,
+    dueDate: "2025-11-25",
+    status: "paid" as const,
+  },
+  {
+    id: "5",
+    invoiceNumber: "INV-2025-005",
+    amount: 1750.0,
+    dueDate: "2025-11-30",
+    status: "pending" as const,
+  },
+  {
+    id: "6",
+    invoiceNumber: "INV-2025-006",
+    amount: 4200.0,
+    dueDate: "2025-10-15",
+    status: "overdue" as const,
+  },
+  {
+    id: "7",
+    invoiceNumber: "INV-2025-007",
+    amount: 950.5,
+    dueDate: "2025-12-10",
+    status: "pending" as const,
+  },
+  {
+    id: "8",
+    invoiceNumber: "INV-2025-008",
+    amount: 3100.0,
+    dueDate: "2025-11-20",
+    status: "paid" as const,
+  },
+];

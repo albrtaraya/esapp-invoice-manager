@@ -7,24 +7,22 @@ import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { ProxyPublicRequest } from "@/app/(frontend)/login/lib/proxyAxios";
 import { useAuth } from "@/providers/AuthContext";
+import Cookies from 'js-cookie'
 
 export function Header(){
     const { language, setLanguage } = useLanguageContext();
     const [theme, setTheme] = useState<"light" | "dark">("light");
     const [showHeader, setShowHeader] = useState(false);
+
+    useEffect(() => {
+      const savedTheme = Cookies.get('theme') as 'light' | 'dark' || 'light'
+      setTheme(savedTheme)
+    }, [])
 
     useEffect(() => {
       if(localStorage.getItem("isFirst") != "true"){
@@ -38,25 +36,23 @@ export function Header(){
         setShowHeader(true);
       }
     }, []);
-
-    useEffect(() => {
-      setTheme(localStorage.getItem("theme") === "dark" ? "dark" : "light")
-      if (localStorage.getItem("theme") === "dark" ) {
-        document.documentElement.classList.add("dark")
-      } else {
-        document.documentElement.classList.remove("dark")
-      }
-    }, [])
-
-    useEffect(() => {
-      if (theme === "dark") {
-        localStorage.setItem("theme", "dark");
-        document.documentElement.classList.add("dark")
-      } else {
-        localStorage.setItem("theme", "light");
-        document.documentElement.classList.remove("dark")
-      }
-    }, [theme])
+    
+  const handleChangeTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(newTheme)
+    
+    Cookies.set('theme', newTheme, { 
+      expires: 365, // 1 año
+      path: '/',
+      sameSite: 'lax'
+    })
+    
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }
 
     return (<>
         <header
@@ -74,7 +70,7 @@ export function Header(){
               </div>
   
               <div className="flex items-center gap-3">
-                <ThemeToggle theme={theme} onToggle={() => setTheme(theme === "light" ? "dark" : "light")} />
+                <ThemeToggle theme={theme} onToggle={handleChangeTheme} />
                 <LanguageSelector currentLanguage={language} onLanguageChange={setLanguage} />
                 <Avatar/>
               </div>
