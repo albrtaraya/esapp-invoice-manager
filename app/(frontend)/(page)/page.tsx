@@ -78,12 +78,10 @@ export default function InvoiceSearchPage() {
   const { language } = useLanguageContext();
   const [searchQuery, setSearchQuery] = useState("")
   const [showContent, setShowContent] = useState(false)
-  const [showHeader, setShowHeader] = useState(false)
   const [showLine, setShowLine] = useState(false)
   const [invoices, setInvoices] = useState<typeof mockInvoices>([])
   const [isFiltersOpen, setIsFiltersOpen] = useState(false)
   const [viewMode, setViewMode] = useState<"cards" | "table">("cards")
-  const [hasSearched, setHasSearched] = useState(false)
   const [isFirstSearch, setIsFirstSearch] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(6)
@@ -106,9 +104,6 @@ export default function InvoiceSearchPage() {
         setShowLine(true)
         setTimeout(() => {
           setShowContent(true)
-          setTimeout(() => {
-            setShowHeader(true)
-          }, 500)
         }, 500);
       }, 100);
   
@@ -116,7 +111,6 @@ export default function InvoiceSearchPage() {
         clearTimeout(timer1)
       }
     }else{
-      setShowHeader(true)
       setSearchBarMovingUp(true)
       setCurrentPage(1)
       const filtered = mockInvoices.filter(
@@ -145,7 +139,6 @@ export default function InvoiceSearchPage() {
       setSearchBarMovingUp(true)
 
       setTimeout(() => {
-        setHasSearched(true)
         setIsFirstSearch(false)
 
         if (searchQuery.trim()) {

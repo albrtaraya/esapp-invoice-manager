@@ -40,7 +40,7 @@ export function Header(){
     }, []);
 
     useEffect(() => {
-      setTheme(localStorage.getItem("theme"))
+      setTheme(localStorage.getItem("theme") === "dark" ? "dark" : "light")
       if (localStorage.getItem("theme") === "dark" ) {
         document.documentElement.classList.add("dark")
       } else {
