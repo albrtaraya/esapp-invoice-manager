@@ -147,7 +147,7 @@ export function Table({
     return <>
         {invoices.length > 0 && (
             <div className="pt-24 pb-8 min-h-screen">
-            <div className="container mx-auto max-w-7xl px-6">
+            <div className="container mx-auto max-w-7xl px-6 max-lg:pt-16">
                 <div
                 className={`flex items-center justify-between mb-6 ${
                     isFirstSearch
@@ -224,7 +224,7 @@ export function Table({
                 </div>
 
                 <div
-                className={`flex items-center justify-between mt-8 ${
+                className={`flex items-center justify-between mt-8 max-lg:flex-col max-lg:justify-center ${
                     isFirstSearch
                     ? `transition-all duration-500 ease-out ${
                         showResults ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -254,7 +254,7 @@ export function Table({
                     </Select>
                 </div>
 
-                <div className="text-sm text-muted-foreground">
+                <div className="text-sm text-muted-foreground max-lg:py-5">
                     {t.showing} {startIndex + 1}-{Math.min(endIndex, invoices.length)} {t.of} {invoices.length} {t.results}
                 </div>
 

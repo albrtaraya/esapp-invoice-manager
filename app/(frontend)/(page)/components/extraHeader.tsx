@@ -63,28 +63,34 @@ export function ExtraHeader(){
               setIsFirstSearch(false)
 
               if (searchQuery.trim()) {
-              const filtered = mockInvoices.filter(
-                  (inv:any) =>
-                  inv.invoiceNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                  inv.amount.toString().includes(searchQuery),
-              )
-              setInvoices(filtered)
+                const filtered = mockInvoices.filter(
+                    (inv:any) =>
+                    inv.service.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    inv.period.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    inv.status.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    inv.amount.toString().includes(searchQuery),
+                )
+                setInvoices(filtered)
               } else {
-              setInvoices(mockInvoices)
+                setInvoices(mockInvoices)
               }
               setCurrentPage(1)
-
+                
               setTimeout(() => {
-              setShowResults(true)
+                setShowResults(true)
               }, 100)
           }, 600)
         } else {
           if (searchQuery.trim()) {
+          console.log(mockInvoices)
               const filtered = mockInvoices.filter(
               (inv:any) =>
-                  inv.invoiceNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                  inv.amount.toString().includes(searchQuery),
+                    inv.service.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    inv.period.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    inv.status.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    inv.amount.toString().includes(searchQuery),
               )
+          console.log(filtered)
               setInvoices(filtered)
           } else {
               setInvoices(mockInvoices)
@@ -108,16 +114,16 @@ export function ExtraHeader(){
           <div className="w-full max-w-3xl ">
             <div className="relative">
               <div
-                className={`flex justify-center items-center flex-col fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 bg-primary transition-all border-x-2 border-x-primary ease-out duration-700 ${
+                className={`flex justify-center items-center flex-col fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 bg-primary transition-all border-x-2 border-x-primary ease-out duration-700 max-lg:w-[90%] max-lg:mt-20 ${
                   searchBarMovingUp ? "!top-9 z-30 scale-100 opacity-100 !duration-0" : "scale-110 "} ${
                   showContent ? "h-auto opacity-100 w-auto !bg-transparent !border-x-transparent !duration-800" :
                   showLine ? "h-10 opacity-100 !duration-800" : "h-0 opacity-0 "
                 }`}
               >
               <div
-                className={`relative transition-all delay-200 duration-1000 ease-out mx-auto opacity-100 overflow-hidden flex flex-col items-center justify-center ${
+                className={`max-lg:bg-background relative transition-all delay-200 duration-1000 ease-out mx-auto opacity-100 overflow-hidden flex flex-col items-center justify-center ${
                   showContent
-                    ? "w-2xl"
+                    ? "w-2xl  max-lg:w-full"
                     : "w-0 "
                 }`}
               >

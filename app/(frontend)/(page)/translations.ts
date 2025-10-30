@@ -1,6 +1,6 @@
 export const translations = {
   es: {
-    searchPlaceholder: "Buscar facturas pendientes...",
+    searchPlaceholder: "Buscar facturas ej: TIGO...",
     searchButton: "Buscar",
     noResults: "No se encontraron facturas",
     invoiceNumber: "Número de Factura",

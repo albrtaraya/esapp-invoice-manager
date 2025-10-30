@@ -46,7 +46,7 @@ export const ModalPayment = ({children, invoice,
                 title: "¡Pago exitoso!",
                 description: `La factura ${invoice.invoiceNumber} ha sido pagada correctamente.`,
                 variant: "default",
-                className: "p-2 bg-green-800/20",
+                className: "p-2 bg-green-800/20  max-lg:z-50 max-lg:bg-green-800",
             });
 
             setOpen(false);
@@ -73,7 +73,7 @@ export const ModalPayment = ({children, invoice,
                 title: "Error al procesar el pago",
                 description: errorMessage,
                 variant: "destructive",
-                className: "p-2 bg-red-800/20",
+                className: "p-2 bg-red-800/20 max-lg:z-50 max-lg:bg-red-800",
             });
         } finally {
             setIsLoading(false);
