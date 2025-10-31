@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AxiosResponse } from "axios";
 import dotenv from "dotenv";
-dotenv.config({ path: ".env.local", quiet: true });
+dotenv.config({ path: ".env", quiet: true });
 
 const Proxy_URL = process.env.PROXY_URL || "http://localhost:3000";
 
