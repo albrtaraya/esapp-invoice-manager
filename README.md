@@ -5,6 +5,11 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5+-blue?logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.9-38bdf8?logo=tailwind-css)
 
+
+https://github.com/user-attachments/assets/735c8085-4131-44d0-9d9d-7374b6e7ca0c
+
+
+
 ## Descripción del Proyecto
 
 Sistema moderno de gestión y consulta de facturas construido con **Next.js 16**, **React 19** y **TypeScript**. La aplicación permite a los usuarios consultar sus facturas de servicios, filtrarlas por múltiples criterios y simular pagos en línea. Incluye autenticación JWT, soporte multiidioma (ES, EN, FR, DE), modo oscuro/claro, y una interfaz responsiva con animaciones fluidas.
