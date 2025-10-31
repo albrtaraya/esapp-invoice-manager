@@ -3,7 +3,7 @@ import { AxiosResponse } from "axios";
 import dotenv from "dotenv";
 dotenv.config({ path: ".env", quiet: true });
 
-const Proxy_URL = process.env.PROXY_URL || "http://localhost:3000";
+const Proxy_URL = process.env.PROXY_URL || "https://esapp-invoice-manager-k4p3y86ka-aaraya-dev-projects.vercel.app";
 
 export const ProxyThenResponse = (res: AxiosResponse<any, any>): any => {
   if (!res.data || res.data === null || res.data === undefined) {
