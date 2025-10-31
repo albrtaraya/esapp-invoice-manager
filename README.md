@@ -133,7 +133,7 @@ Esta separación proporciona:
 ## Arquitectura de Carpetas
 
 ```
-invoice-search/
+esapp-invoice-manager/
 │
 ├── app/
 │   ├── (backend)/                           # 🔒 Backend - Lógica del Servidor
@@ -784,20 +784,20 @@ const filtered = mockInvoices.filter(invoice => {
 
 ```bash
 # Clonar repositorio
-git clone <repository-url>
-cd invoice-search
+git clone https://github.com/albrtaraya/esapp-invoice-manager
+cd esapp-invoice-manager
 
-# Instalar dependencias
-npm install
+# Instalar dependencias, se usa el --legacy-peer-deps y el --no-cache por que aun no existe compativilidad de 100% de algunos modulos usados con React 19 y Next 16
+npm install --legacy-peer-deps --no-cache
 
 # Configurar variables de entorno
-cp .env.example .env.local
+cp .env.example .env
 # Editar .env.local con tus valores
 ```
 
 ### Variables de Entorno
 
-Crear archivo `.env.local`:
+Crear archivo `.env`:
 
 ```env
 # JWT Secret (cambia en producción)
